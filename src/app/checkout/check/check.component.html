@@ -1,0 +1,116 @@
+<p>check works!</p>
+<div class="card-header mb-3" *ngIf='!details.valid' style="color: red;">
+  Order can't be placed. Fill all the details correctly
+</div>
+<div class="card-header mb-3" *ngIf='details.valid' style="color: green;">
+  Thank you so much {{this.details.get('firstName')?.value+" "+this.details.get('lastName')?.value}}. Your order has been placed successfully and will be delivered in <b>3 days</b>. <button class='btn btn-primary' (click)='print()'>Print</button>
+</div>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-10">
+              Invoice Date:<b>{{today | date:'mediumDate'}}</b>
+            </div>
+            <div class="col-md-2 float-right">
+              <b>Status</b>: Pending
+             </div>
+          </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-10">
+        <b>Brand Logo</b>
+      </div>
+      <div class="col-md-2 float-right">
+        <h5>#INV-6486</h5>
+       </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-6 ms-3">
+        From:
+        <br>
+        <br>
+        <b>Trends Shopping</b>
+        <br>
+        No:12 , OMR Road
+        <br>
+        Chennai-600045
+        <br>
+        Email : customer.care@a2zshpee.com
+        <br>
+        Phone: 044-45695040
+      </div>
+
+      <div class="col-5" *ngIf="!details.valid">
+        From:
+        <br>
+        <br>
+        Please fill all the required details correctly.
+      </div>
+      
+
+      
+
+      <div class="col-5" *ngIf="details.valid">
+        From:
+        <br>
+        <br>
+        <b>{{this.details.get('firstName')?.value}} {{this.details.get('lastName')?.value}}</b>
+        <br>
+        {{this.details.get('add1')?.value +
+
+        " " +
+
+        this.details.get('add2')?.value
+        
+        }}
+        <br>
+        {{this.details.get('state')?.value+"-"+this.details.get("zipCode")?.value}}
+        <br>
+        Email : {{this.details.get('email')?.value}}
+        <br>
+        Phone: {{this.details.get('mobile')?.value}}
+      </div>
+      
+    </div>
+
+    <div class="row mt-4" >
+      <div class="col-1 ms-2"><b>#</b></div>
+      <div class="col-3 "><b>Products</b></div>
+      <div class="col-2 "><b>Price</b></div>
+      <div class="col-3 "><b>Qty</b></div>
+      <div class="col-2 r"><b>Amount</b></div>
+  </div>
+
+  <div class="row text-center" *ngIf = 'cart.size==0' style="padding-top: 8px; text-align: center; justify-content: center;">
+      NO ITEMS IN CART
+  </div>
+
+  <div class="row" *ngFor='let i of l let idx = index' name = 'cart'>
+    <div class="col-1 ms-2"><b>{{idx+1}}</b></div>
+
+      <div class="col-3">{{products[i[0]-1].product_name}}</div>
+      <div class="col-2">{{products[i[0]-1].product_price}}</div>
+      <div class="col-3">
+          <!-- <span>
+              <button class="btn btn-primary"(click)='deltocart(i[0])'>-</button>
+          </span> -->
+          <span>
+              {{i[1]}}
+          </span>
+          <!-- <span>
+              <button class="btn btn-primary" (click)='addtocart(i[0])'>+</button>
+
+          </span> -->
+
+      </div>
+      <div class="col-2">{{i[1]*toint(products[i[0]-1].product_price)}}</div>
+  </div>
+
+  <div style="padding-top: 8px; text-align: right;" >
+     Total= {{total}}
+  </div>
+
+</div>
+        

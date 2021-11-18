@@ -1,0 +1,195 @@
+
+<div class="row card" style="margin-right: 10px;">
+    
+        <div class="card-header" style="margin: 0px;">
+            <h3>Billing Details</h3>
+        </div>
+    <div class="col-12">
+
+        <form [formGroup] = 'detailsForm' (ngSubmit) = "onSubmit()">
+            <div class="row mt-3 mx-2">
+              <div class="form-group col-md-6">
+                <label for="Fname">First Name</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="Fname" 
+                placeholder="Fisrt Name"
+                formControlName = 'firstName'
+                >
+                <span *ngIf = "!detailsForm.get('firstName').valid && (detailsForm.get('firstName').touched || formSubmitAttempt )"
+                class="help-block"
+                style="color: red;">
+                Please Enter a valid First Name
+                </span>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="Lname">Last Name</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="Lname" 
+                placeholder="Last Name"
+                formControlName = 'lastName'
+                >
+                <span *ngIf = "!detailsForm.get('lastName').valid && (detailsForm.get('lastName').touched || formSubmitAttempt )"
+                class="help-block"
+                style="color: red;">
+                Please Enter a valid Last Name
+                </span>
+              </div>
+            </div>
+            <div class="row mt-3 mx-2">
+                <div class="form-group col-md-6">
+                  <label for="email">Email</label>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  id="email" 
+                  placeholder="Email"
+                formControlName = 'email'
+                >
+                <span *ngIf = "!detailsForm.get('email').valid && (detailsForm.get('email').touched || formSubmitAttempt )"
+                class="help-block"
+                style="color: red;">
+                Please Enter a valid Email Id
+                </span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="mobile">Mobile</label>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  id="mobile" 
+                  placeholder="Mobile"
+                formControlName = 'mobile'
+                  >
+                  <span *ngIf = "!detailsForm.get('mobile').valid && (detailsForm.get('mobile').touched || formSubmitAttempt )"
+                class="help-block"
+                style="color: red;">
+                Please Enter a valid Mobile No.
+                </span>
+                </div>
+            </div>
+            <div class="row mt-3 mx-2">
+                <div class="form-group col-md-6">
+                  <label for="add1">Address1</label>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  id="add1" 
+                  placeholder="Address1"
+                formControlName = 'add1'
+                >
+
+                <span *ngIf = "!detailsForm.get('add1').valid && (detailsForm.get('add1').touched || formSubmitAttempt )"
+                class="help-block"
+                style="color: red;">
+                Please Enter a valid Address
+                </span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="add2">Address2</label>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  id="add2" 
+                  placeholder="Password"
+                formControlName = 'add2'
+                  >
+                  <span *ngIf = "!detailsForm.get('add2').valid && (detailsForm.get('add2').touched || formSubmitAttempt )"
+                class="help-block"
+                style="color: red;">
+                Please Enter a valid Address
+                </span>
+                </div>
+            </div>
+            <div class="row mt-3 mx-2">
+                <div class="form-group col-md-6">
+                  <label for="city">City</label>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  id="city" 
+                  placeholder="City"
+                formControlName = 'city'
+                  >
+                  <span *ngIf = "!detailsForm.get('city').valid && (detailsForm.get('city').touched || formSubmitAttempt )"
+                class="help-block"
+                style="color: red;">
+                Please Enter a valid City
+                </span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="state">State</label>
+                  <select 
+                  id="state"
+                  class="form-control"
+                formControlName = 'state'
+                    
+                >
+                    <option value="" selected disabled>Please select</option>
+                    <option *ngFor='let state of states' value='state.stateId' >
+                        {{state.stateName}}
+                    </option>
+                </select>
+                <span *ngIf = "!detailsForm.get('state').valid && (detailsForm.get('state').touched || formSubmitAttempt )"
+                class="help-block"
+                style="color: red;">
+                Please Enter a valid State
+                </span>
+                </div>
+            </div>
+            <div class="row mt-3 mx-2">
+                <div class="form-group col-md-6">
+                  <label for="zip">Zip Code</label>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  id="zip" 
+                  placeholder="Zip Code"
+                formControlName = 'zipCode'
+                >
+
+                  <span *ngIf = "!detailsForm.get('zipCode').valid && (detailsForm.get('zipCode').touched || formSubmitAttempt )"
+                class="help-block"
+                style="color: red;">
+                Please Enter a valid Zip Code
+                </span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="paym">Payment Mode</label>
+                  <select 
+                  id="paym"
+                  class="form-control"
+                formControlName = 'paym'
+                    
+                >
+                    <option value="" selected disabled>Please select</option>
+                    <option value="cash" >Cash</option>
+                    <option value="card" >Debit/Credit Card</option>
+                    <option value="upi">UPI</option>
+
+
+                    
+                </select>
+
+                <span *ngIf = "!detailsForm.get('paym').valid && (detailsForm.get('paym').touched || formSubmitAttempt )"
+                class="help-block"
+                style="color: red;">
+                Please Enter a valid Payment Method
+                </span>
+                </div>
+            </div>
+            <hr>
+            <div class="row mt-3 mx-2 mb-2">
+                <div class="form-group col-md-12" >
+                  <button class="btn btn-primary" type="submit">Checkout</button>
+                  <button class="btn btn-primary" style="margin-left: 5px;" type="button" (click)='continueShopping()'>Continue Shopping</button>
+
+                </div>
+            </div>            
+        </form>
+    </div>
+</div>

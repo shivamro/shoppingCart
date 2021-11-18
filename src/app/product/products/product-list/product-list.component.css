@@ -1,0 +1,26 @@
+.card-group{
+
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    /* height: 200px;
+    width: 600px; */
+
+}
+.card-group .card{
+    padding: 10px;
+    list-style: none;
+    height: 300px;
+    flex: 0 0 30.333333%;
+}
+
+.card img{
+
+    display: block;
+    max-width:100px;
+    max-height:100px;
+    
+   
+    /* aspect-ratio: 1 / 1; */
+  object-fit: contain;
+}
